@@ -1,0 +1,18 @@
+{
+  "name": "speak-seat",
+  "version": "1.0.0",
+  "private": true,
+  "description": "线下讨论投屏用的多人发言席位应用（Express + WebSocket）",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "ws": "^8.18.0"
+  }
+}

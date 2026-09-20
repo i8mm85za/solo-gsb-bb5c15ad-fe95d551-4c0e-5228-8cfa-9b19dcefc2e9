@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>发言席位 · 线下讨论投屏</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>🎙️ 发言席位</h1>
+    <div id="conn" class="conn conn-off">未连接</div>
+  </header>
+
+  <!-- 首页：创建 / 加入 -->
+  <main id="screen-home">
+    <div class="home-grid">
+      <section class="card">
+        <h2>创建房间</h2>
+        <p class="hint">创建者即主持人，可排序、开始 / 结束发言。</p>
+        <input id="create-name" placeholder="你的昵称" maxlength="24" autocomplete="off">
+        <button id="btn-create" class="btn btn-primary">创建房间</button>
+      </section>
+      <section class="card">
+        <h2>加入房间</h2>
+        <p class="hint">输入主持人分享的房间码。</p>
+        <input id="join-code" class="code-input" placeholder="房间码" maxlength="6" autocomplete="off">
+        <input id="join-name" placeholder="你的昵称" maxlength="24" autocomplete="off">
+        <button id="btn-join" class="btn btn-primary">加入房间</button>
+      </section>
+    </div>
+  </main>
+
+  <!-- 房间页 -->
+  <main id="screen-room" hidden>
+    <div class="room-head">
+      <div class="room-code-box">
+        <span class="label">房间码</span>
+        <button id="room-code" class="room-code" title="点击复制">------</button>
+      </div>
+      <div class="room-meta">
+        <span id="room-version" class="tag" title="服务端状态版本">v0</span>
+        <span id="room-count" class="tag">0 人</span>
+        <button id="btn-leave" class="btn btn-ghost btn-sm">离开房间</button>
+      </div>
+    </div>
+
+    <section id="current-panel" class="current-panel current-idle">
+      <div class="current-label">正在发言</div>
+      <div id="current-name" class="current-name">暂无</div>
+      <div id="current-timer" class="current-timer">00:00</div>
+    </section>
+
+    <div class="columns">
+      <section class="col col-queue">
+        <h2>发言队列 <span id="queue-count" class="muted"></span></h2>
+        <ol id="queue" class="queue"></ol>
+        <p id="queue-empty" class="empty">队列为空，点击「申请发言」加入</p>
+        <div id="my-controls" class="controls"></div>
+        <div id="host-controls" class="controls" hidden>
+          <div class="controls-title">主持人控制</div>
+          <div class="controls-row">
+            <button id="btn-start-next" class="btn btn-primary">▶ 开始下一位</button>
+            <button id="btn-end" class="btn btn-warn">■ 结束发言</button>
+            <button id="btn-clear" class="btn btn-danger">清空队列</button>
+          </div>
+          <p class="hint">拖动队列项可调整顺序；每项右侧可单独开始或移出。</p>
+        </div>
+      </section>
+
+      <aside class="col col-side">
+        <h2>成员</h2>
+        <ul id="participants" class="participants"></ul>
+        <h2>操作记录</h2>
+        <ul id="log" class="log"></ul>
+      </aside>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>

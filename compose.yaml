@@ -1,0 +1,12 @@
+services:
+  app:
+    build: .
+    image: speak-seat
+    container_name: speak-seat
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      ROOM_IDLE_TTL_MINUTES: 120
+      MAX_LOG_ENTRIES: 200
+    restart: unless-stopped
